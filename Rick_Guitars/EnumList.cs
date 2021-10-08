@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Rick_Guitars
+﻿namespace Rick_Guitars
 {
     enum Type
     {
@@ -18,6 +12,6 @@ namespace Rick_Guitars
     enum Wood
     {
         INDIAN_ROSEWOOD, BRAZILIAN_ROSERWOOD, MAHOGANY,
-        MAPLE, COCOBOLO, CEDAR, ADIRONDACK, ALDER, SITKA
+        MAPLE, COCOBOLO, CEDAR, ADIRONDACK, ALDER, SITKA, SUNBURST
     }
 }
