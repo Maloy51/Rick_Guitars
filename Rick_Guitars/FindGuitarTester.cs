@@ -11,21 +11,22 @@ namespace Rick_Guitars
             Inventory inventory = new Inventory();
             initializeInventory(inventory);
 
-            Guitar whatErlinLikes = new Guitar("", 0, Builder.FENDER, "Stratocastor", Type.ELECTRIC, Wood.ALDER, Wood.ALDER);
+            Guitar whatErlinLikes = new Guitar("", 0, new GuitarSpec(Builder.FENDER, "Stratocastor", Type.ELECTRIC, Wood.ALDER, Wood.ALDER));
             ArrayList matchingGuitars = inventory.search(whatErlinLikes);
-            if(matchingGuitars != null)
+            if (matchingGuitars != null)
             {
                 Console.ForegroundColor = ConsoleColor.Cyan;
                 Console.WriteLine("Erin, you might like these guitars:");
-                foreach(Guitar guitar in matchingGuitars)
+                foreach (Guitar guitaras in matchingGuitars)
                 {
+                    GuitarSpec guitar = guitaras.getSpec();
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine("  We have a " +
                         guitar.getBuilder() + " \"" + guitar.getModel() + "\" " +
                         guitar.getType() + " guitar:\n " +
                         guitar.getBackWood() + " back and sides,\n " +
                         guitar.getTopWood() + " top.\n You can have in for only $" +
-                        guitar.getPrice() + "!\n-----------");
+                        guitaras.getPrice() + "!\n-----------");
                 }
                 Console.ResetColor();
             }

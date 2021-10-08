@@ -10,22 +10,13 @@ namespace Rick_Guitars
     {
         private string serialNumber;
         private double price;
-        private Builder builder;
-        private string model;
-        private Type type;
-        private Wood backWood;
-        private Wood topWood;
+        private GuitarSpec spec;
 
-        public Guitar(string serialNumber, double price, Builder builder,
-            string model, Type type, Wood backWood, Wood topWood)
+        public Guitar(string serialNumber, double price, GuitarSpec spec)
         {
             this.serialNumber = serialNumber;
             this.price = price;
-            this.builder = builder;
-            this.model = model;
-            this.type = type;
-            this.backWood = backWood;
-            this.topWood = topWood;
+            this.spec = spec;
         }
 
         public string getSerialNumber()
@@ -40,25 +31,9 @@ namespace Rick_Guitars
         {
             this.price = price;
         }
-        public Builder getBuilder()
+        public GuitarSpec getSpec()
         {
-            return builder;
-        }
-        public string getModel()
-        {
-            return model;
-        }
-        public Type getType()
-        {
-            return type;
-        }
-        public Wood getBackWood()
-        {
-            return backWood;
-        }
-        public Wood getTopWood()
-        {
-            return topWood;
+            return spec;
         }
     }
 }

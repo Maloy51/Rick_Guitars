@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="EnumList.cs" />
     <Compile Include="Guitar.cs" />
+    <Compile Include="GuitarSpec.cs" />
     <Compile Include="Inventory.cs" />
     <Compile Include="FindGuitarTester.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
