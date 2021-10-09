@@ -11,7 +11,7 @@ namespace Rick_Guitars
             Inventory inventory = new Inventory();
             initializeInventory(inventory);
 
-            Guitar whatErlinLikes = new Guitar("", 0, new GuitarSpec(Builder.FENDER, "Stratocastor",NumStrings.TWELVE, Type.ELECTRIC, Wood.ALDER, Wood.ALDER));
+            Guitar whatErlinLikes = new Guitar("", 0, Builder.FENDER, "Stratocastor",NumStrings.TWELVE, Type.ELECTRIC, Wood.ALDER, Wood.ALDER);
             ArrayList matchingGuitars = inventory.search(whatErlinLikes);
             if (matchingGuitars != null)
             {
