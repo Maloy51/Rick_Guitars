@@ -14,8 +14,4 @@
         INDIAN_ROSEWOOD, BRAZILIAN_ROSERWOOD, MAHOGANY,
         MAPLE, COCOBOLO, CEDAR, ADIRONDACK, ALDER, SITKA, SUNBURST
     }
-    enum NumStrings
-    {
-        SIX, SEVEN, TWELVE
-    }
 }

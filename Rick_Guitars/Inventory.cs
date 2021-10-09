@@ -1,20 +1,21 @@
-﻿using System.Collections;
+﻿using System.Collections.Generic;
 
 namespace Rick_Guitars
 {
     class Inventory
     {
-        private ArrayList guitars;
+        private List<Guitar> guitars;
 
         public Inventory()
         {
-            guitars = new ArrayList();
+            guitars = new List<Guitar>();
         }
 
         public void addGuitar(string serialNumber, double price, Builder builder,
-            string model, NumStrings numStrings, Type type, Wood backWood, Wood topWood)
+            string model, Type type, int numStrings, Wood backWood, Wood topWood)
         {
-            Guitar guitar = new Guitar(serialNumber, price, builder, model, numStrings, type, backWood, topWood);
+            GuitarSpec spec = new GuitarSpec(builder, model, type, numStrings, backWood, topWood);
+            Guitar guitar = new Guitar(serialNumber, price, spec);
             guitars.Add(guitar);
         }
 
@@ -22,28 +23,16 @@ namespace Rick_Guitars
         {
             foreach(Guitar guitar in guitars)
             {
-                if (serialNumber.Equals(guitar.getSerialNumber())) return (Guitar)guitar;
+                if (serialNumber.Equals(guitar.getSerialNumber())) return guitar;
             }
             return null;
         }
-        public ArrayList search(Guitar sGuitar)
+        public List<Guitar> search(GuitarSpec searchSpec)
         {
-            GuitarSpec searchGuitar = sGuitar.getSpec();
-            ArrayList matchingGuitars = new ArrayList();
-            foreach(Guitar guitara in guitars)
+            List<Guitar> matchingGuitars = new List<Guitar>();
+            foreach(Guitar guitar in guitars)
             {
-                GuitarSpec guitar = guitara.getSpec();
-                // Серийный номер игнорируется, так как он уникален
-                // Цена игнорируется, так как она уникальна
-                if (guitar.getBuilder() != searchGuitar.getBuilder()) continue;
-                string model = searchGuitar.getModel();
-                if ((model != null) && (!model.Equals("")) && (!model.Equals(guitar.getModel()))) continue;
-                if (guitar.getNumString() != searchGuitar.getNumString()) continue;
-                if (guitar.getType() != searchGuitar.getType()) continue;
-                if (guitar.getBackWood() != searchGuitar.getBackWood()) continue;
-                if (guitar.getTopWood() != searchGuitar.getBackWood()) continue;
-                
-                matchingGuitars.Add(guitara);
+                if (guitar.getSpec().matches(searchSpec)) matchingGuitars.Add(guitar);
             }
             return matchingGuitars;
         }

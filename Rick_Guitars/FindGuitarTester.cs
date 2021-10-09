@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collections;
+using System.Collections.Generic;
 
 namespace Rick_Guitars
 {
@@ -11,8 +11,8 @@ namespace Rick_Guitars
             Inventory inventory = new Inventory();
             initializeInventory(inventory);
 
-            Guitar whatErlinLikes = new Guitar("", 0, Builder.FENDER, "Stratocastor",NumStrings.TWELVE, Type.ELECTRIC, Wood.ALDER, Wood.ALDER);
-            ArrayList matchingGuitars = inventory.search(whatErlinLikes);
+            GuitarSpec whatErlinLikes = new GuitarSpec(Builder.FENDER, "Stratocastor", Type.ELECTRIC, 6, Wood.ALDER, Wood.ALDER);
+            List<Guitar> matchingGuitars = inventory.search(whatErlinLikes);
             if (matchingGuitars != null)
             {
                 Console.ForegroundColor = ConsoleColor.Cyan;
@@ -23,9 +23,10 @@ namespace Rick_Guitars
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine("  We have a " +
                         guitar.getBuilder() + " \"" + guitar.getModel() + "\" " +
-                        guitar.getType() + " - " + guitar.getNumString() + " strings guitar:\n " +
-                        guitar.getBackWood() + " back and sides,\n " +
-                        guitar.getTopWood() + " top.\n You can have in for only $" +
+                        guitar.getNumStrings() + "-string " +
+                        guitar.getType() + " guitar:\n   " +
+                        guitar.getBackWood() + " back and sides,\n   " +
+                        guitar.getTopWood() + " top.\n   You can have in for only $" +
                         guitaras.getPrice() + "!\n-----------");
                 }
                 Console.ResetColor();
@@ -40,9 +41,9 @@ namespace Rick_Guitars
 
         private static void initializeInventory(Inventory inventory)
         {
-            inventory.addGuitar("V95693", 1499.95, Builder.FENDER, "Stratocastor",NumStrings.SIX, Type.ELECTRIC, Wood.ALDER, Wood.ALDER);
-            inventory.addGuitar("V9512", 1549.95, Builder.FENDER, "Stratocastor",NumStrings.TWELVE, Type.ELECTRIC, Wood.ALDER, Wood.ALDER);
-            inventory.addGuitar("V95465", 7999.95, Builder.GIBSON, "1957 SJ-200 VINTAGE",NumStrings.SEVEN, Type.ACOUSTIC, Wood.SUNBURST, Wood.SUNBURST);
+            inventory.addGuitar("V95693", 1499.95, Builder.FENDER, "Stratocastor", Type.ELECTRIC, 6, Wood.ALDER, Wood.ALDER);
+            inventory.addGuitar("V9512", 1549.95, Builder.FENDER, "Stratocastor", Type.ELECTRIC, 6, Wood.ALDER, Wood.ALDER);
+            inventory.addGuitar("V95465", 7999.95, Builder.GIBSON, "1957 SJ-200 VINTAGE", Type.ACOUSTIC, 6, Wood.SUNBURST, Wood.SUNBURST);
         }
     }
 }

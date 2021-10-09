@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Rick_Guitars
+﻿namespace Rick_Guitars
 {
     class Guitar
     {
@@ -12,12 +6,11 @@ namespace Rick_Guitars
         private double price;
         private GuitarSpec spec;
 
-        public Guitar(string serialNumber, double price, Builder builder, string model,
-            NumStrings numStrings, Type type, Wood backWood, Wood topWood)
+        public Guitar(string serialNumber, double price, GuitarSpec spec)
         {
             this.serialNumber = serialNumber;
             this.price = price;
-            this.spec = new GuitarSpec(builder, model, numStrings, type, backWood, topWood);
+            this.spec = spec;
         }
 
         public string getSerialNumber()

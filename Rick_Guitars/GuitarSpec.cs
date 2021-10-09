@@ -1,26 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Rick_Guitars
+﻿namespace Rick_Guitars
 {
     class GuitarSpec
     {
         private Builder builder;
         private string model;
-        private NumStrings numStrings;
         private Type type;
+        private int numStrings;
         private Wood backWood;
         private Wood topWood;
 
-        public GuitarSpec(Builder builder, string model, NumStrings numStrings, Type type, Wood backWood, Wood topWood)
+        public GuitarSpec(Builder builder, string model, Type type, int numStrings, Wood backWood, Wood topWood)
         {
             this.builder = builder;
             this.model = model;
-            this.numStrings = numStrings;
             this.type = type;
+            this.numStrings = numStrings;
             this.backWood = backWood;
             this.topWood = topWood;
         }
@@ -33,13 +27,13 @@ namespace Rick_Guitars
         {
             return model;
         }
-        public NumStrings getNumString()
-        {
-            return numStrings;
-        }
         public Type getType()
         {
             return type;
+        }
+        public int getNumStrings()
+        {
+            return numStrings;
         }
         public Wood getBackWood()
         {
@@ -48,6 +42,17 @@ namespace Rick_Guitars
         public Wood getTopWood()
         {
             return topWood;
+        }
+
+        public bool matches(GuitarSpec otherSpec)
+        {
+            if(builder != otherSpec.builder) return false;
+            if((model != null) && (!model.Equals("")) && (!model.Equals(otherSpec.model))) return false;
+            if(type != otherSpec.type) return false;
+            if(numStrings != otherSpec.numStrings) return false;
+            if(backWood != otherSpec.backWood) return false;
+            if(topWood != otherSpec.topWood) return false;
+            return true;
         }
     }
 }
