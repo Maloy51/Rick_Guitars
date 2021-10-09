@@ -12,10 +12,10 @@ namespace Rick_Guitars
         }
 
         public void addGuitar(string serialNumber, double price, Builder builder,
-            string model, Type type, Wood backWood, Wood topWood)
+            string model, NumStrings numStrings, Type type, Wood backWood, Wood topWood)
         {
-            guitars.Add(new Guitar(serialNumber, price, new GuitarSpec(builder,
-                model, type, backWood, topWood)));
+            GuitarSpec guitarSpec = new GuitarSpec(builder, model, numStrings, type, backWood, topWood);
+            guitars.Add(new Guitar(serialNumber, price, guitarSpec);
         }
 
         public Guitar getGuitar(string serialNumber)
@@ -38,6 +38,7 @@ namespace Rick_Guitars
                 if (guitar.getBuilder() != searchGuitar.getBuilder()) continue;
                 string model = searchGuitar.getModel();
                 if ((model != null) && (!model.Equals("")) && (!model.Equals(guitar.getModel()))) continue;
+                if (guitar.getNumStrinng() != searchGuitar.getNumString()) continue;
                 if (guitar.getType() != searchGuitar.getType()) continue;
                 if (guitar.getBackWood() != searchGuitar.getBackWood()) continue;
                 if (guitar.getTopWood() != searchGuitar.getBackWood()) continue;

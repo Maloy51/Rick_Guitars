@@ -12,11 +12,12 @@ namespace Rick_Guitars
         private double price;
         private GuitarSpec spec;
 
-        public Guitar(string serialNumber, double price, GuitarSpec spec)
+        public Guitar(string serialNumber, double price, Builder builder, string model,
+            NumStrings numStrings, Type type, Wood backWood, Wood topWood)
         {
             this.serialNumber = serialNumber;
             this.price = price;
-            this.spec = spec;
+            this.spec = new GuitarSpec(builder, model, numStrings, type, backWood, topWood);
         }
 
         public string getSerialNumber()
